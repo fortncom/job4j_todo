@@ -17,6 +17,9 @@ public class HiberStore implements Store {
     private final SessionFactory sf = new MetadataSources(registry).buildMetadata()
             .buildSessionFactory();
 
+    private HiberStore() {
+    }
+
     public static Store instOf() {
         return Lazy.INST;
     }

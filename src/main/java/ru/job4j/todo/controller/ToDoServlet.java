@@ -19,7 +19,6 @@ import java.util.List;
 public class ToDoServlet extends HttpServlet {
 
     private static final Gson GSON = new GsonBuilder().create();
-    private static final Logger LOG = LoggerFactory.getLogger(ToDoServlet.class.getName());
 
     @Override
     protected void doGet(HttpServletRequest req,

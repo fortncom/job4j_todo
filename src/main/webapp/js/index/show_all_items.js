@@ -3,9 +3,12 @@ function showAll() {
     $.ajax({
         cache: false,
         type: 'GET',
-        url: '/todo/index',
+        url: '/todo/index.do',
         dataType: 'json'
     }).done(function (data) {
+        let logout = "<a class=\"nav-link\" id=\"logoutId\" href=\"/todo/logout.do\">Выйти</a>";
+        document.getElementById('logoutId').innerHTML = logout;
+
         let result = "<tbody id=\"bodyTableId\">";
         let row = 1;
         for (let i = 0; i < data.length; i++) {
@@ -17,6 +20,7 @@ function showAll() {
             result += "<input type=\"hidden\" value=\"" + item.description + "\" id=\"userId"+ item.id + "\"/>";
             result += "<th>" + row + "</th>";
             result += "<th>" + item.description + "</th>";
+            result += "<th>" + item.user.name + "</th>";
             let date = new Date(item.created);
             const dtFormat = new Intl.DateTimeFormat('ru', {
                 hour: "numeric",

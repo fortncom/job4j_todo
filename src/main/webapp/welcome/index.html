@@ -16,12 +16,20 @@
 
     <title>ToDo</title>
 
-    <script src="js/validate.js"></script>
-    <script src="js/status.js"></script>
-    <script src="js/add_item.js"></script>
-    <script src="js/show_all_items.js"></script>
+    <script src="../js/index/validate.js"></script>
+    <script src="../js/index/status.js"></script>
+    <script src="../js/index/add_item.js"></script>
+    <script src="../js/index/show_all_items.js"></script>
 </head>
 <body>
+
+<div class="container">
+    <ul class="nav">
+        <li class="nav-item">
+            <a id="logoutId" ></a>
+        </li>
+    </ul>
+</div>
 
 <form>
     <div class="form-group">
@@ -50,6 +58,7 @@
     <tr>
         <th scope="col">#</th>
         <th scope="col">Задача</th>
+        <th scope="col">Автор</th>
         <th scope="col">Дата создания</th>
         <th scope="col">Статус</th>
     </tr>

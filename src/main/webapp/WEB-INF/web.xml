@@ -4,12 +4,47 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
    http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
   <display-name>Web Application</display-name>
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+  <filter>
+    <filter-name>AuthFilter</filter-name>
+    <filter-class>ru.job4j.todo.filter.AuthFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthFilter</filter-name>
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
   <servlet>
     <servlet-name>ToDoServlet</servlet-name>
     <servlet-class>ru.job4j.todo.controller.ToDoServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AuthServlet</servlet-name>
+    <servlet-class>ru.job4j.todo.controller.AuthServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>ru.job4j.todo.controller.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RegServlet</servlet-name>
+    <servlet-class>ru.job4j.todo.controller.RegServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>ToDoServlet</servlet-name>
-    <url-pattern>/index</url-pattern>
+    <url-pattern>/index.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AuthServlet</servlet-name>
+    <url-pattern>/auth.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RegServlet</servlet-name>
+    <url-pattern>/reg.do</url-pattern>
   </servlet-mapping>
 </web-app>

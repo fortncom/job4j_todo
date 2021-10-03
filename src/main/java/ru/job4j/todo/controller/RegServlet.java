@@ -1,8 +1,8 @@
 package ru.job4j.todo.controller;
 
 import ru.job4j.todo.model.User;
-import ru.job4j.todo.store.HiberStore;
-import ru.job4j.todo.store.Store;
+import ru.job4j.todo.dao.HiberStore;
+import ru.job4j.todo.dao.Store;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

@@ -1,5 +1,4 @@
-package ru.job4j.auto.model;
-
+package ru.job4j.hibernate.lazyinit.task.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -7,20 +6,20 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "mark")
-public class Mark {
-
+@Table(name = "categories")
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Model> models = new ArrayList<>();
 
-    public static Mark of(String name) {
-        Mark mark = new Mark();
-        mark.setName(name);
-        return mark;
+    private String name;
+    @OneToMany(mappedBy = "category")
+    private List<Task> tasks = new ArrayList<>();
+
+    public static Category of(String name) {
+        Category category = new Category();
+        category.name = name;
+        return category;
     }
 
     public int getId() {
@@ -39,16 +38,12 @@ public class Mark {
         this.name = name;
     }
 
-    public List<Model> getModels() {
-        return models;
+    public List<Task> getTasks() {
+        return tasks;
     }
 
-    public void setModels(List<Model> models) {
-        this.models = models;
-    }
-
-    public void addModel(Model model) {
-        this.models.add(model);
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
     @Override
@@ -59,8 +54,8 @@ public class Mark {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Mark mark = (Mark) o;
-        return id == mark.id;
+        Category category = (Category) o;
+        return id == category.id;
     }
 
     @Override
@@ -70,10 +65,9 @@ public class Mark {
 
     @Override
     public String toString() {
-        return "Mark{"
+        return "Category{"
                 + "id=" + id
                 + ", name='" + name + '\''
-                + ", models=" + models
                 + '}';
     }
 }

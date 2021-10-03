@@ -20,7 +20,11 @@
         <mapping class="ru.job4j.todo.model.Item" />
         <mapping class="ru.job4j.todo.model.User" />
         <mapping class="ru.job4j.todo.model.Role" />
-        <mapping class="ru.job4j.auto.model.Model" />
-        <mapping class="ru.job4j.auto.model.Mark" />
+        <mapping class="ru.job4j.hibernate.onetomany.auto.model.Model" />
+        <mapping class="ru.job4j.hibernate.onetomany.auto.model.Mark" />
+        <mapping class="ru.job4j.hibernate.lazyinit.task.model.Category" />
+        <mapping class="ru.job4j.hibernate.lazyinit.task.model.Task" />
+        <mapping class="ru.job4j.hibernate.lazyinit.auto.model.Model" />
+        <mapping class="ru.job4j.hibernate.lazyinit.auto.model.Mark" />
     </session-factory>
 </hibernate-configuration>

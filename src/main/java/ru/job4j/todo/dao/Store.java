@@ -1,4 +1,4 @@
-package ru.job4j.todo.store;
+package ru.job4j.todo.dao;
 
 import ru.job4j.todo.model.Item;
 import ru.job4j.todo.model.Role;

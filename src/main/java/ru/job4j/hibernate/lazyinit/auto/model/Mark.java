@@ -1,21 +1,26 @@
-package ru.job4j.auto.model;
+package ru.job4j.hibernate.lazyinit.auto.model;
+
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-@Entity
-@Table(name = "model")
-public class Model {
+@Entity(name = "l_mark")
+@Table(name = "l_mark")
+public class Mark {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    @OneToMany(mappedBy = "mark")
+    private List<Model> models = new ArrayList<>();
 
-    public static Model of(String name) {
-        Model model = new Model();
-        model.setName(name);
-        return model;
+    public static Mark of(String name) {
+        Mark mark = new Mark();
+        mark.setName(name);
+        return mark;
     }
 
     public int getId() {
@@ -34,6 +39,18 @@ public class Model {
         this.name = name;
     }
 
+    public List<Model> getModels() {
+        return models;
+    }
+
+    public void setModels(List<Model> models) {
+        this.models = models;
+    }
+
+    public void addModel(Model model) {
+        this.models.add(model);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -42,8 +59,8 @@ public class Model {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Model model = (Model) o;
-        return id == model.id;
+        Mark mark = (Mark) o;
+        return id == mark.id;
     }
 
     @Override
@@ -53,9 +70,10 @@ public class Model {
 
     @Override
     public String toString() {
-        return "Model{"
+        return "Mark{"
                 + "id=" + id
                 + ", name='" + name + '\''
+                + ", models=" + models
                 + '}';
     }
 }

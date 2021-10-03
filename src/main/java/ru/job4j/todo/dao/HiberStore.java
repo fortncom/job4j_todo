@@ -1,4 +1,4 @@
-package ru.job4j.todo.store;
+package ru.job4j.todo.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

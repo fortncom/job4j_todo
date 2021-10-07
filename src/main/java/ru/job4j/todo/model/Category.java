@@ -1,20 +1,16 @@
-package ru.job4j.hibernate.lazyinit.task.model;
+package ru.job4j.todo.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
-@Entity(name = "task_categories")
-@Table(name = "task_categories")
+@Entity(name = "categories")
+@Table(name = "categories")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
-    @OneToMany(mappedBy = "category")
-    private List<Task> tasks = new ArrayList<>();
 
     public static Category of(String name) {
         Category category = new Category();
@@ -36,14 +32,6 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Task> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
     }
 
     @Override

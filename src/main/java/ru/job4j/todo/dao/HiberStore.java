@@ -9,6 +9,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.job4j.todo.model.Category;
 import ru.job4j.todo.model.Item;
 import ru.job4j.todo.model.Role;
 import ru.job4j.todo.model.User;
@@ -105,18 +106,50 @@ public class HiberStore implements Store {
         });
     }
 
+    @Override
+    public void save(Category category) {
+        if (category.getId() == 0) {
+            create(category);
+        } else {
+            update(category);
+        }
+    }
+
+    private Category create(Category category) {
+        return execute(session -> {
+            session.save(category);
+            return category;
+        });
+    }
+
+    private void update(Category category) {
+        execute(session -> {
+            session.update(category);
+            return category;
+        });
+    }
+
     public void delete(Integer id) {
         execute(session -> {
-            session.delete(new Item(id, null));
+            Item item = new Item();
+            item.setId(id);
+            session.delete(item);
             return null;
         });
     }
 
     public List<Item> findAllItem() {
         return execute(session -> {
-            final Query query = session.createQuery("from ru.job4j.todo.model.Item");
+            final Query query = session.createQuery(
+                    "select distinct i from item i join fetch i.categories");
             return query.list();
         });
+    }
+
+    @Override
+    public List<Category> findAllCategories() {
+        return execute(session ->
+                session.createQuery("select c from categories c", Category.class).list());
     }
 
     @Override
@@ -127,6 +160,11 @@ public class HiberStore implements Store {
     @Override
     public Role findRoleById(int id) {
         return execute(session -> session.get(Role.class, id));
+    }
+
+    @Override
+    public Category findCategoryById(int id) {
+        return execute(session -> session.get(Category.class, id));
     }
 
     @Override

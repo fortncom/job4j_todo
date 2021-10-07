@@ -30,7 +30,7 @@ public class HbmRun {
             session.save(two);
             session.save(three);
 
-            list = session.createQuery("select distinct c from Category c join fetch c.tasks"
+            list = session.createQuery("select distinct c from task_categories c join fetch c.tasks"
             ).list();
 
             session.getTransaction().commit();

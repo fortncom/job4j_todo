@@ -16,4 +16,8 @@ function changeStatus(data) {
             alert("Error:" + err);
         });
     }
-}
+};
+
+$(document).ready(function () {
+    showAll();
+});

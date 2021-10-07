@@ -1,25 +1,21 @@
-package ru.job4j.hibernate.lazyinit.task.model;
+package ru.job4j.hibernate.manytomany.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
-@Entity(name = "task_categories")
-@Table(name = "task_categories")
-public class Category {
+@Entity
+@Table(name = "cities")
+public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
-    @OneToMany(mappedBy = "category")
-    private List<Task> tasks = new ArrayList<>();
 
-    public static Category of(String name) {
-        Category category = new Category();
-        category.name = name;
-        return category;
+    public static City of(String name) {
+        City city = new City();
+        city.name = name;
+        return city;
     }
 
     public int getId() {
@@ -38,14 +34,6 @@ public class Category {
         this.name = name;
     }
 
-    public List<Task> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -54,8 +42,8 @@ public class Category {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Category category = (Category) o;
-        return id == category.id;
+        City city = (City) o;
+        return id == city.id;
     }
 
     @Override
@@ -65,7 +53,7 @@ public class Category {
 
     @Override
     public String toString() {
-        return "Category{"
+        return "City{"
                 + "id=" + id
                 + ", name='" + name + '\''
                 + '}';

@@ -2,9 +2,11 @@ package ru.job4j.todo.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-@Entity
+@Entity(name = "item")
 @Table(name = "item")
 public class Item {
 
@@ -14,6 +16,9 @@ public class Item {
     private String description;
     private Timestamp created = new Timestamp(System.currentTimeMillis());
     private Boolean done;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Category> categories = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -26,9 +31,13 @@ public class Item {
         this.description = description;
     }
 
-    public Item(int id, String description) {
-        this.id = id;
+    public Item(String description, List<Category> categories) {
         this.description = description;
+        this.categories = categories;
+    }
+
+    public void addCategory(Category category) {
+        this.categories.add(category);
     }
 
     public int getId() {
@@ -71,6 +80,14 @@ public class Item {
         this.user = user;
     }
 
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -95,6 +112,7 @@ public class Item {
                 + ", description='" + description + '\''
                 + ", created=" + created
                 + ", done=" + done
+                + ", categories=" + categories
                 + ", user=" + user
                 + '}';
     }

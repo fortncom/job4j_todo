@@ -8,6 +8,8 @@ function showAll() {
     }).done(function (data) {
         let logout = "<a class=\"nav-link\" id=\"logoutId\" href=\"/todo/logout.do\">Выйти</a>";
         document.getElementById('logoutId').innerHTML = logout;
+        let addItem = "<a class=\"nav-link\" id=\"addNewItem\" href=\"/todo/add_task.html\">Добавить задачу</a>";
+        document.getElementById('addNewItem').innerHTML = addItem;
 
         let result = "<tbody id=\"bodyTableId\">";
         let row = 1;
@@ -20,6 +22,12 @@ function showAll() {
             result += "<input type=\"hidden\" value=\"" + item.description + "\" id=\"userId"+ item.id + "\"/>";
             result += "<th>" + row + "</th>";
             result += "<th>" + item.description + "</th>";
+            result += "<th>";
+            let categories = item.categories;
+            for (let j = 0; j < categories.length; j++) {
+                result += item.categories[j].name + "<br>";
+            }
+            result += "</th>";
             result += "<th>" + item.user.name + "</th>";
             let date = new Date(item.created);
             const dtFormat = new Intl.DateTimeFormat('ru', {

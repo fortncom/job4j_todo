@@ -1,14 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -16,9 +13,7 @@
 
     <title>ToDo</title>
 
-    <script src="../js/index/validate.js"></script>
     <script src="../js/index/status.js"></script>
-    <script src="../js/index/add_item.js"></script>
     <script src="../js/index/show_all_items.js"></script>
 </head>
 <body>
@@ -28,23 +23,13 @@
         <li class="nav-item">
             <a id="logoutId" ></a>
         </li>
+        <li class="nav-item">
+            <a id="addNewItem" ></a>
+        </li>
     </ul>
 </div>
 
-<form>
-    <div class="form-group">
-        <div class="container-fluid">
-            <label for="formForDefinition1">Описание новой задачи</label>
-            <textarea class="form-control" id="formForDefinition1" rows="2"></textarea>
-        </div>
-        <br>
-        <div class="form-group">
-            <div class="col-md-6 mb-6">
-                <button type="reset" class="btn btn-primary" onclick="addNewItem()">Добавить</button>
-            </div>
-        </div>
-    </div>
-</form>
+
 
 <br>
 <br>
@@ -58,6 +43,7 @@
     <tr>
         <th scope="col">#</th>
         <th scope="col">Задача</th>
+        <th scope="col">Категория</th>
         <th scope="col">Автор</th>
         <th scope="col">Дата создания</th>
         <th scope="col">Статус</th>

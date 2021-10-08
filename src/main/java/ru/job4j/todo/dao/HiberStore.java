@@ -154,7 +154,12 @@ public class HiberStore implements Store {
 
     @Override
     public Item findItemById(int id) {
-        return execute(session -> session.get(Item.class, id));
+        return (Item) execute(session -> {
+            final Query query = session.createQuery(
+                    "select distinct i from item i join fetch i.categories where i.id=:id");
+            query.setParameter("id", id);
+            return query.uniqueResult();
+        });
     }
 
     @Override

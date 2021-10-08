@@ -33,5 +33,8 @@
         <mapping class="ru.job4j.hibernate.lazyinit.auto.model.Model" />
         <mapping class="ru.job4j.hibernate.lazyinit.auto.model.Mark" />
         <mapping class="ru.job4j.hibernate.date.Product" />
+        <mapping class="ru.job4j.hibernate.carsowners.Engine" />
+        <mapping class="ru.job4j.hibernate.carsowners.Car" />
+        <mapping class="ru.job4j.hibernate.carsowners.Driver" />
     </session-factory>
 </hibernate-configuration>

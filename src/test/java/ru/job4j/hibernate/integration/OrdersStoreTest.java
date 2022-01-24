@@ -29,7 +29,7 @@ public class OrdersStoreTest {
         StringBuilder builder = new StringBuilder();
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(new FileInputStream(
-                        "src\\main\\java\\ru\\job4j\\hibernate\\integration\\db\\update_001.sql"
+                        "./src/main/java/ru/job4j/hibernate/integration/db/update_001.sql"
                 )))) {
             br.lines().forEach(line -> builder.append(line).append(System.lineSeparator()));
         } catch (IOException e) {
@@ -46,7 +46,7 @@ public class OrdersStoreTest {
         StringBuilder builder = new StringBuilder();
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(new FileInputStream(
-                        "src\\main\\java\\ru\\job4j\\hibernate\\integration\\db\\delete_001.sql"
+                        "./src/main/java/ru/job4j/hibernate/integration/db/delete_001.sql"
                 )))) {
             br.lines().forEach(line -> builder.append(line).append(System.lineSeparator()));
         } catch (IOException e) {
